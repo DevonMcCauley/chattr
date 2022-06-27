@@ -8,6 +8,7 @@ const io = new Server(server);
 app.get("/", (req, res) => {
 	res.sendFile(__dirname + "/index.html");
 });
+app.use(express.static("public"));
 
 io.on("connection", (socket) => {
 	socket.on("chat message", (msg) => {
@@ -20,5 +21,5 @@ io.on("connection", (socket) => {
 });
 
 server.listen(3000, () => {
-	console.log("listening on *:3000");
+	console.log("listening on :3000");
 });
